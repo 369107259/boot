@@ -1,0 +1,31 @@
+--标注在类上，相当于把该类作为spring的xml配置文件中的<beans>，作用为：配置spring容器(应用上下文)
+--@Configuration不可以是final类型；
+--@Configuration不可以是匿名类；
+--嵌套的configuration必须是静态类。
+@Configuration
+--标注在方法上(返回某个实例的方法)，等价于spring的xml配置文件中的<bean>，作用为：注册bean对象
+@Bean  @Component
+
+--此注解用于属性上，作用是把该属性的名称序列化为另外一个名称，如把trueName属性序列化为name，@JsonProperty(value="name")。
+@JsonProperty
+
+--yml 自定义信息读取
+@Value("${***.***}") 单个获取
+
+@ConfigurationProperties(prefix = "**.**.**") 批量获取
+
+--随机数获取
+value = ${random.value}
+number = ${random.int}
+number1 = ${random.int(10)}
+bigNumber = ${random.long}
+
+--服务器启动
+java -jar xx.jar --server.port=8080(可省略)
+
+--多环境配置
+application-{profile}.properties
+spring.profiles.active={profile} 实现
+
+--swagger2 访问地址
+http://localhost:8080/swagger-ui.html

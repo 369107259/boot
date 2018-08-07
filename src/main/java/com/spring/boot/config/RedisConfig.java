@@ -1,6 +1,5 @@
 package com.spring.boot.config;
 
-import com.yx.orderservice.task.CacheRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -100,13 +99,5 @@ public class RedisConfig {
         return redisTemplate.opsForZSet();
     }
 
-    /**
-     * 初始化缓存cache
-     * @return
-     */
-    @Bean
-    public CacheRunner cacheRunner(){
-        return new CacheRunner();
-    }
 
 }

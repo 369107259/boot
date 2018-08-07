@@ -1,6 +1,7 @@
 package com.spring.boot.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -12,6 +13,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  */
 
 @Configuration
+@EnableCaching//开启注解
 public class RedisConfig {
     @Autowired
     private RedisConnectionFactory redisConnectionFactory;

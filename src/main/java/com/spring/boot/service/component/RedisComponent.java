@@ -1,4 +1,4 @@
-package com.spring.boot.config;
+package com.spring.boot.service.component;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,11 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.SetOperations;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
 
-@Component("redisComponent")
+@Component(value = "redisComponent")
 public class RedisComponent {
     private static final Logger logger = LoggerFactory.getLogger(RedisComponent.class);
 
@@ -22,8 +23,15 @@ public class RedisComponent {
     private ListOperations<String, String> listOperation;
     @Autowired
     private SetOperations<String, String> setOperation;
+    @Autowired
+    private ValueOperations valueOperations;
 
-
+    public void  set(String key,Object values){
+        valueOperations.set(key,values);
+    }
+    public Object get(String key){
+        return  valueOperations.get(key);
+    }
     public Object hGet(String key, String hKey){
         return hashOperation.get(key, hKey);
     }

@@ -25,6 +25,7 @@ public class HelloControllerTest {
     public void index() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/hello"))
                 .andExpect(MockMvcResultMatchers.content().string("Hello World"));
+
     }
 
     @Test

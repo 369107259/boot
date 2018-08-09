@@ -2,6 +2,7 @@ package com.spring.boot.controller;
 
 import com.spring.boot.entity.User;
 import com.spring.boot.service.component.RedisComponent;
+import com.spring.boot.utils.ObjectMapperUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class HelloController {
         user.setAge(12);
         user.setId((long) 21);
         user.setName("huangyong");
-        redisComponent.set("user","sdlfjiodsjo");
+        redisComponent.set("user", ObjectMapperUtil.toJsonString(user));
         redisComponent.leftPush("liwei","langrenpipa");
         logger.info("values=============="+ redisComponent.leftPop("liwei"));
         logger.info(redisComponent.get("user").toString());

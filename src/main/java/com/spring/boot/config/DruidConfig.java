@@ -74,8 +74,8 @@ public class DruidConfig {
     @Value("${spring.datasource.logSlowSql}")
     private String logSlowSql;
 
-    @Bean
     @Primary
+    @Bean(name = "dataSource")
     public DataSource dataSource(){
         //@Primary 注解作用是当程序选择dataSource时选择被注解的这个
         DruidDataSource datasource = new DruidDataSource();

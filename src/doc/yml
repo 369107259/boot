@@ -29,3 +29,8 @@ spring.profiles.active={profile} 实现
 
 --swagger2 访问地址
 http://localhost:8080/swagger-ui.html
+
+--SpringBoot 三种将mapper加载到spring bean 容器中得方法
+1.mapper 接口 添加 @Mapper 注解
+2.使用@MapperScan("mapper全路径")  数据源或启动类位置上
+3.创建个mapperScannerConfigurer类 并set BasePackage指向mapper全路径(此项目是这种方式)

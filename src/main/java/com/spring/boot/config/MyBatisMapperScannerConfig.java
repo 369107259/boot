@@ -18,7 +18,7 @@ public class MyBatisMapperScannerConfig {
         //对应<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
         //对应<property name="basePackage" value="com.lcl.springBoot.dao" />
-        mapperScannerConfigurer.setBasePackage("com.cn.spring.boot.entity");
+        mapperScannerConfigurer.setBasePackage("com.spring.boot.mapper");
         return mapperScannerConfigurer;
     }
 

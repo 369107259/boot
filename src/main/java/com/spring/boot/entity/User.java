@@ -1,12 +1,23 @@
 package com.spring.boot.entity;
 
-import java.io.Serializable;
+import java.util.Date;
 
-public class User implements Serializable {
-
+public class User {
     private Long id;
-    private String name;
-    private Integer age;
+
+    private String chinaName;
+
+    private String userName;
+
+    private String email;
+
+    private String userPassword;
+
+    private Date createTime;
+
+    private Date lastLoginTime;
+
+    private Long status;
 
     public Long getId() {
         return id;
@@ -16,28 +27,59 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getChinaName() {
+        return chinaName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setChinaName(String chinaName) {
+        this.chinaName = chinaName == null ? null : chinaName.trim();
     }
 
-    public Integer getAge() {
-        return age;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setUserName(String userName) {
+        this.userName = userName == null ? null : userName.trim();
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                '}';
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword == null ? null : userPassword.trim();
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(Date lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
+    }
+
+    public Long getStatus() {
+        return status;
+    }
+
+    public void setStatus(Long status) {
+        this.status = status;
     }
 }

@@ -45,8 +45,6 @@ public class UserController {
     @RequestMapping(value="/{id}", method=RequestMethod.PUT)
     public String putUser(@PathVariable Long id, @RequestBody User user) {
         User u = users.get(id);
-        u.setName(user.getName());
-        u.setAge(user.getAge());
         users.put(id, u);
         return "success";
     }

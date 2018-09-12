@@ -1,6 +1,8 @@
-package com.cn.mapper;
+package com.spring.boot.mapper;
 
-import com.cn.entity.User;
+import com.spring.boot.entity.User;
+import org.apache.ibatis.annotations.Mapper;
+
 
 public interface UserMapper {
     int deleteByPrimaryKey(Long id);

@@ -1,8 +1,7 @@
 package com.spring.boot.controller;
 
 import com.spring.boot.entity.User;
-import com.spring.boot.service.component.RedisComponent;
-import com.spring.boot.utils.ObjectMapperUtil;
+import com.spring.boot.service.impl.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,19 +14,12 @@ import springfox.documentation.annotations.ApiIgnore;
 public class HelloController {
     private static final Logger logger = LoggerFactory.getLogger(HelloController.class);
     @Autowired
-    private RedisComponent redisComponent;
+    private UserServiceImpl userService;
     @ApiIgnore
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public String index() throws Exception {
-        User user =new User();
-        user.setAge(12);
-        user.setId((long) 21);
-        user.setName("huangyong");
-        redisComponent.set("user", ObjectMapperUtil.toJsonString(user));
-        redisComponent.leftPush("liwei","langrenpipa");
-        logger.info("values=============="+ redisComponent.leftPop("liwei"));
-        logger.info(redisComponent.get("user").toString());
-        return null;
+    public String index(Long id) throws Exception {
+        User user = userService.getUser(id);
+        return user.getUserName();
     }
 
 }

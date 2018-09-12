@@ -5,11 +5,11 @@
     <property name="log.path" value="/hy/log/lie-server-common" />
     <!--输出到控制台-->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-             <level>ERROR</level>
-         </filter>-->
+         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+             <level>INFO</level>
+         </filter>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([${springAppName:-},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}]){yellow} %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}</pattern>
         </encoder>
     </appender>
 
@@ -17,10 +17,10 @@
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${log.path}/lie-server-common.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${log.path}/lie-server-common-%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+            <fileNamePattern>${log.path}/lie-server-common-%d{yyyy-MM-dd}.zip</fileNamePattern>
         </rollingPolicy>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([${springAppName:-},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}]){yellow} %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}</pattern>
         </encoder>
     </appender>
 
@@ -33,7 +33,7 @@
         <appender-ref ref="console"/>
         <appender-ref ref="file" />
     </logger>
-    <logger name="org.springframework" level="DEBUG" additivity="false">
+    <logger name="org.springframework" level="INFO" additivity="false">
         <appender-ref ref="console"/>
         <appender-ref ref="file" />
     </logger>

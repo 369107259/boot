@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @AutoConfigureAfter(MyBatisConfig.class)
 public class MyBatisMapperScannerConfig {
     @Bean
-    public MapperScannerConfigurer mapperScannerConfigurer() {
+    public static MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
         //对应<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");

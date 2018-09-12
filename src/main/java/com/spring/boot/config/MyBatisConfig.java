@@ -58,12 +58,4 @@ public class MyBatisConfig {
             throw new RuntimeException(e);
         }
     }
-    @Bean
-    public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
-        return new SqlSessionTemplate(sqlSessionFactory);
-    }
-    @Bean
-    public PlatformTransactionManager annotationDrivenTransactionManager() {
-        return new DataSourceTransactionManager(dataSource);
-    }
 }

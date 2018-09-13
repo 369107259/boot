@@ -34,16 +34,6 @@ public class MyBatisConfig {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
         bean.setTypeAliasesPackage("com.cn.spring.boot.entity");
-        //分页插件
-        PageInterceptor interceptor = new PageInterceptor();
-        Properties properties = new Properties();
-        properties.setProperty("reasonable", "true");
-        properties.setProperty("supportMethodsArguments", "true");
-        properties.setProperty("returnPageInfo", "check");
-        properties.setProperty("params", "count=countSql");
-        interceptor.setProperties(properties);
-        //添加插件
-        bean.setPlugins(new Interceptor[]{interceptor});
         //添加XML目录
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         try {

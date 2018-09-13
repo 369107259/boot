@@ -2,6 +2,8 @@ package com.spring.boot.mapper;
 
 import com.spring.boot.entity.User;
 
+import java.util.List;
+
 
 public interface UserMapper {
     int deleteByPrimaryKey(Long id);
@@ -15,4 +17,6 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    List<User> selectAll();
 }

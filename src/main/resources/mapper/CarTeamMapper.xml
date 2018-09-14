@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.spring.boot.mapper.UserMapper">
-  <resultMap id="BaseResultMap" type="com.spring.boot.entity.User">
+<mapper namespace="com.spring.boot.mapper.CarTeamMapper">
+  <resultMap id="BaseResultMap" type="com.spring.boot.entity.CarTeam">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="account" jdbcType="VARCHAR" property="account" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="car_team_name" jdbcType="VARCHAR" property="carTeamName" />
+    <result column="contact_way" jdbcType="BIGINT" property="contactWay" />
+    <result column="person_liable" jdbcType="VARCHAR" property="personLiable" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,16 +69,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, status, create_time, update_time, account, password
+    id, status, create_time, update_time, car_team_name, contact_way, person_liable
   </sql>
-  <select id="selectByExample" parameterType="com.spring.boot.entity.UserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.spring.boot.entity.CarTeamExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from u_user
+    from u_car_team
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -88,29 +89,29 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from u_user
+    from u_car_team
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from u_user
+    delete from u_car_team
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.spring.boot.entity.UserExample">
-    delete from u_user
+  <delete id="deleteByExample" parameterType="com.spring.boot.entity.CarTeamExample">
+    delete from u_car_team
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.spring.boot.entity.User">
-    insert into u_user (id, status, create_time, 
-      update_time, account, password
-      )
+  <insert id="insert" parameterType="com.spring.boot.entity.CarTeam">
+    insert into u_car_team (id, status, create_time, 
+      update_time, car_team_name, contact_way, 
+      person_liable)
     values (#{id,jdbcType=BIGINT}, #{status,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
-      )
+      #{updateTime,jdbcType=TIMESTAMP}, #{carTeamName,jdbcType=VARCHAR}, #{contactWay,jdbcType=BIGINT}, 
+      #{personLiable,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.spring.boot.entity.User">
-    insert into u_user
+  <insert id="insertSelective" parameterType="com.spring.boot.entity.CarTeam">
+    insert into u_car_team
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -124,11 +125,14 @@
       <if test="updateTime != null">
         update_time,
       </if>
-      <if test="account != null">
-        account,
+      <if test="carTeamName != null">
+        car_team_name,
       </if>
-      <if test="password != null">
-        password,
+      <if test="contactWay != null">
+        contact_way,
+      </if>
+      <if test="personLiable != null">
+        person_liable,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -144,22 +148,25 @@
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="account != null">
-        #{account,jdbcType=VARCHAR},
+      <if test="carTeamName != null">
+        #{carTeamName,jdbcType=VARCHAR},
       </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
+      <if test="contactWay != null">
+        #{contactWay,jdbcType=BIGINT},
+      </if>
+      <if test="personLiable != null">
+        #{personLiable,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.spring.boot.entity.UserExample" resultType="java.lang.Long">
-    select count(*) from u_user
+  <select id="countByExample" parameterType="com.spring.boot.entity.CarTeamExample" resultType="java.lang.Long">
+    select count(*) from u_car_team
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update u_user
+    update u_car_team
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
@@ -173,11 +180,14 @@
       <if test="record.updateTime != null">
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.account != null">
-        account = #{record.account,jdbcType=VARCHAR},
+      <if test="record.carTeamName != null">
+        car_team_name = #{record.carTeamName,jdbcType=VARCHAR},
       </if>
-      <if test="record.password != null">
-        password = #{record.password,jdbcType=VARCHAR},
+      <if test="record.contactWay != null">
+        contact_way = #{record.contactWay,jdbcType=BIGINT},
+      </if>
+      <if test="record.personLiable != null">
+        person_liable = #{record.personLiable,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -185,19 +195,20 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update u_user
+    update u_car_team
     set id = #{record.id,jdbcType=BIGINT},
       status = #{record.status,jdbcType=TINYINT},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      account = #{record.account,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR}
+      car_team_name = #{record.carTeamName,jdbcType=VARCHAR},
+      contact_way = #{record.contactWay,jdbcType=BIGINT},
+      person_liable = #{record.personLiable,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.spring.boot.entity.User">
-    update u_user
+  <update id="updateByPrimaryKeySelective" parameterType="com.spring.boot.entity.CarTeam">
+    update u_car_team
     <set>
       <if test="status != null">
         status = #{status,jdbcType=TINYINT},
@@ -208,22 +219,26 @@
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="account != null">
-        account = #{account,jdbcType=VARCHAR},
+      <if test="carTeamName != null">
+        car_team_name = #{carTeamName,jdbcType=VARCHAR},
       </if>
-      <if test="password != null">
-        password = #{password,jdbcType=VARCHAR},
+      <if test="contactWay != null">
+        contact_way = #{contactWay,jdbcType=BIGINT},
+      </if>
+      <if test="personLiable != null">
+        person_liable = #{personLiable,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.spring.boot.entity.User">
-    update u_user
+  <update id="updateByPrimaryKey" parameterType="com.spring.boot.entity.CarTeam">
+    update u_car_team
     set status = #{status,jdbcType=TINYINT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      account = #{account,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR}
+      car_team_name = #{carTeamName,jdbcType=VARCHAR},
+      contact_way = #{contactWay,jdbcType=BIGINT},
+      person_liable = #{personLiable,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

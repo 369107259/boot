@@ -2,7 +2,7 @@ package com.spring.boot.entity;
 
 import java.util.Date;
 
-public class User {
+public class CarTeam {
     private Long id;
 
     private Byte status;
@@ -11,9 +11,11 @@ public class User {
 
     private Date updateTime;
 
-    private String account;
+    private String carTeamName;
 
-    private String password;
+    private Long contactWay;
+
+    private String personLiable;
 
     public Long getId() {
         return id;
@@ -47,19 +49,27 @@ public class User {
         this.updateTime = updateTime;
     }
 
-    public String getAccount() {
-        return account;
+    public String getCarTeamName() {
+        return carTeamName;
     }
 
-    public void setAccount(String account) {
-        this.account = account == null ? null : account.trim();
+    public void setCarTeamName(String carTeamName) {
+        this.carTeamName = carTeamName == null ? null : carTeamName.trim();
     }
 
-    public String getPassword() {
-        return password;
+    public Long getContactWay() {
+        return contactWay;
     }
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+    public void setContactWay(Long contactWay) {
+        this.contactWay = contactWay;
+    }
+
+    public String getPersonLiable() {
+        return personLiable;
+    }
+
+    public void setPersonLiable(String personLiable) {
+        this.personLiable = personLiable == null ? null : personLiable.trim();
     }
 }

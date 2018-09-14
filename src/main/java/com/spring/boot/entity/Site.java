@@ -1,8 +1,9 @@
 package com.spring.boot.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
-public class User {
+public class Site {
     private Long id;
 
     private Byte status;
@@ -11,9 +12,11 @@ public class User {
 
     private Date updateTime;
 
-    private String account;
+    private String dropPoint;
 
-    private String password;
+    private BigDecimal mileage;
+
+    private String siteNumber;
 
     public Long getId() {
         return id;
@@ -47,19 +50,27 @@ public class User {
         this.updateTime = updateTime;
     }
 
-    public String getAccount() {
-        return account;
+    public String getDropPoint() {
+        return dropPoint;
     }
 
-    public void setAccount(String account) {
-        this.account = account == null ? null : account.trim();
+    public void setDropPoint(String dropPoint) {
+        this.dropPoint = dropPoint == null ? null : dropPoint.trim();
     }
 
-    public String getPassword() {
-        return password;
+    public BigDecimal getMileage() {
+        return mileage;
     }
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+    public void setMileage(BigDecimal mileage) {
+        this.mileage = mileage;
+    }
+
+    public String getSiteNumber() {
+        return siteNumber;
+    }
+
+    public void setSiteNumber(String siteNumber) {
+        this.siteNumber = siteNumber == null ? null : siteNumber.trim();
     }
 }

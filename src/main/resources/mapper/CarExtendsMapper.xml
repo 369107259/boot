@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.boot.mapper.CarMapper">
+  <select id="selectByTest" parameterType="java.lang.Long" resultType="map">
+    SELECT a.driver,a.plate_number as plateNumber,b.car_team_name as carTeamName,b.contact_way as contactWay  from u_car a JOIN u_car_team b ON a.car_team_id=b.id
+    where a.id = #{id,jdbcType=BIGINT}
+  </select>
+</mapper>

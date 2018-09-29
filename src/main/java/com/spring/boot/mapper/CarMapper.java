@@ -3,6 +3,8 @@ package com.spring.boot.mapper;
 import com.spring.boot.entity.Car;
 import com.spring.boot.entity.CarExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface CarMapper {
@@ -27,4 +29,6 @@ public interface CarMapper {
     int updateByPrimaryKeySelective(Car record);
 
     int updateByPrimaryKey(Car record);
+
+    Map selectByTest(Long id);
 }

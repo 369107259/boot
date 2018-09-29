@@ -21,6 +21,7 @@ public class CarController {
     @GetMapping("/info")
     @ResponseBody
     public Object info(Long id){
+        logger.info("获取关联数据信息");
         return  carService.info(id);
     }
 }

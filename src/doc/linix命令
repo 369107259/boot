@@ -1,0 +1,27 @@
+--检查java 进程
+ps -ef |grep java
+--sz命令发送文件到本地：
+# sz filename
+--rz命令本地上传文件到服务器：
+# rz
+--tar
+  解包：tar zxvf filename.tar
+  打包：tar czvf filename.tar dirname
+--zip命令
+  解压：unzip filename.zip
+  压缩：zip filename.zip dirname
+--gz命令
+    解压1：gunzip filename.gz
+    解压2：gzip -d filename.gz
+    压缩：gzip filename
+        .tar.gz 和  .tgz
+        解压：tar zxvf filename.tar.gz
+        压缩：tar zcvf filename.tar.gz dirname
+        压缩多个文件：tar zcvf filename.tar.gz dirname1 dirname2 dirname3.....
+
+rm [选项] 文件
+选项说明：
+-f　　　　-force　　　　　　忽略不存在的文件，强制删除，无任何提示
+-i　　　　--interactive　　　 进行交互式地删除
+-r | -R　　--recursive　　　  递归式地删除列出的目录下的所有目录和文件
+-v　　　   --verbose　　　　详细显示进行的步骤
